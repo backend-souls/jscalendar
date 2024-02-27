@@ -23,7 +23,7 @@
     "build": "tsc -p tsconfig.build.json"
   },
   "devDependencies": {
-    "@faker-js/faker": "7.6.0",
+    "@faker-js/faker": "8.4.1",
     "@jest/globals": "^29.7.0",
     "@tsconfig/node20": "^20.1.2",
     "@types/jest": "^29.5.12",
