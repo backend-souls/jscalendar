@@ -1,0 +1,186 @@
+{
+  "registry": "Location Types Registry",
+  "source": "https://www.iana.org/assignments/location-type-registry/location-type-registry.xml",
+  "locationTypes": [
+    {
+      "token": "aircraft",
+      "description": "A device that is used or intended to be used for flight in the\nair, such as an airplane, helicopter, gyroplane, glider or\nlighter-than-air devices like a balloon."
+    },
+    {
+      "token": "airport",
+      "description": "A place from which aircraft operate, such as an airport or\nheliport."
+    },
+    {
+      "token": "arena",
+      "description": "Enclosed area used for sports events."
+    },
+    {
+      "token": "automobile",
+      "description": "A usually four-wheeled automotive vehicle designed for\npassenger transportation, such as a car."
+    },
+    {
+      "token": "bank",
+      "description": "Business establishment in which money is kept for saving or\ncommercial purposes or is invested, supplied for loans, or\nexchanged."
+    },
+    {
+      "token": "bar",
+      "description": "A bar or saloon."
+    },
+    {
+      "token": "bus",
+      "description": "A large motor vehicle designed to carry passengers."
+    },
+    {
+      "token": "bicycle",
+      "description": "A vehicle with two wheels tandem, a steering handle, a\nsaddle seat, and pedals by which it is propelled."
+    },
+    {
+      "token": "bus-station",
+      "description": "Terminal that serves bus passengers, such as a bus depot\nor bus terminal."
+    },
+    {
+      "token": "cafe",
+      "description": "Usually small and informal establishment serving various\nrefreshments (such as coffee); coffee shop."
+    },
+    {
+      "token": "classroom",
+      "description": "Academic classroom or lecture hall."
+    },
+    {
+      "token": "club",
+      "description": "Dance club, nightclub or discotheque."
+    },
+    {
+      "token": "construction",
+      "description": "Construction site."
+    },
+    {
+      "token": "convention-center",
+      "description": "Convention center or exhibition hall."
+    },
+    {
+      "token": "government",
+      "description": "Government building, such as those used by the\nlegislative, executive, or judicial branches of governments,\nincluding court houses, police stations and military\ninstallations."
+    },
+    {
+      "token": "hospital",
+      "description": "Hospital, hospice, medical clinic, mental institution, or\ndoctor's office."
+    },
+    {
+      "token": "hotel",
+      "description": "Hotel, motel, inn or other lodging establishment."
+    },
+    {
+      "token": "industrial",
+      "description": "Industrial setting, such as a manufacturing floor or\npower plant."
+    },
+    {
+      "token": "library",
+      "description": "Library or other public place in which literary and artistic\nmaterials, such as books, music, periodicals, newspapers,\npamphlets, prints, records, and tapes, are kept for reading,\nreference, or lending."
+    },
+    {
+      "token": "motorcycle",
+      "description": "A two-wheeled automotive vehicle, including a scooter."
+    },
+    {
+      "token": "museum",
+      "description": "Location where objects of historical, artistic, scientific or cultural interest are stored and exhibited."
+    },
+    {
+      "token": "office",
+      "description": "Business setting, such as an office."
+    },
+    {
+      "token": "other",
+      "description": "A place without a registered place type representation."
+    },
+    {
+      "token": "outdoors",
+      "description": "Outside a building, in or into the open air, such as a park\nor city streets."
+    },
+    {
+      "token": "parking",
+      "description": "A parking lot or parking garage."
+    },
+    {
+      "token": "place-of-worship",
+      "description": "A religious site where congregations gather for\nreligious observances, such as a church, chapel, meetinghouse,\nmosque, shrine, synagogue, or temple."
+    },
+    {
+      "token": "prison",
+      "description": "Correctional institution where persons are confined while on\ntrial or for punishment, such as a prison, penitentiary, jail,\nbrig."
+    },
+    {
+      "token": "public",
+      "description": "Public area such as a shopping mall, street, park, public\nbuilding, train station, airport or in public conveyance such as a\nbus, train, plane or ship.  This general description encompasses\nthe more precise descriptors 'street', 'public-transport',\n'aircraft', 'bus', 'bus-station', 'train', 'train-station',\n'airport', 'shopping-area', 'outdoors', and 'watercraft'."
+    },
+    {
+      "token": "public-transport",
+      "description": "Any form of public transport, including aircraft,\nbus, train or ship."
+    },
+    {
+      "token": "residence",
+      "description": "A private or residential setting, not necessarily the\npersonal residence of the entity, e.g., including a friend's home."
+    },
+    {
+      "token": "restaurant",
+      "description": "Restaurant, coffee shop or other public dining\nestablishment."
+    },
+    {
+      "token": "school",
+      "description": "School or university property, but not necessarily a\nclassroom or library."
+    },
+    {
+      "token": "shopping-area",
+      "description": "Shopping mall or shopping area.  This area is a large,\noften enclosed shopping complex containing various stores,\nbusinesses, and restaurants usually accessible by common\npassageways."
+    },
+    {
+      "token": "stadium",
+      "description": "Large, usually open structure for sports events, including a\nracetrack."
+    },
+    {
+      "token": "store",
+      "description": "Place where merchandise is offered for sale, such as a shop."
+    },
+    {
+      "token": "street",
+      "description": "A public thoroughfare, such as a avenue, street, alley, lane,\nroad, including any sidewalks."
+    },
+    {
+      "token": "theater",
+      "description": "Theater, lecture hall, auditorium, class room, movie theater\nor similar facility designed for presentations, talks, plays,\nmusic performances and other events involving an audience."
+    },
+    {
+      "token": "train",
+      "description": "Train, monorail, maglev, cable car or similar conveyance."
+    },
+    {
+      "token": "train-station",
+      "description": "Terminal where trains load or unload passengers or\ngoods; railway station, railroad station, railroad terminal, train\ndepot."
+    },
+    {
+      "token": "truck",
+      "description": "An automotive vehicle suitable for hauling, used primarily to\ncarry goods rather than people."
+    },
+    {
+      "token": "underway",
+      "description": "In a land, water, or air craft which is underway (in\nmotion)."
+    },
+    {
+      "token": "unknown",
+      "description": "The type of place is unknown."
+    },
+    {
+      "token": "warehouse",
+      "description": "Place in which goods or merchandise are stored, such as a\nstorehouse or self-storage facility."
+    },
+    {
+      "token": "water",
+      "description": "In, on or above bodies of water, such as an ocean, lake,\nriver, canal or other waterway."
+    },
+    {
+      "token": "watercraft",
+      "description": "On a vessel for travel on water such as a boat or ship."
+    }
+  ]
+}

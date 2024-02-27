@@ -1,0 +1,47 @@
+{
+  "name": "@backend-souls/jscalendar",
+  "version": "1.0.0",
+  "description": "An opinionated implementation of the JSCalendar defined in the RFC-8984.",
+  "type": "commonjs",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "/dist"
+  ],
+  "keywords": [
+    "JSCalendar",
+    "RFC-8984"
+  ],
+  "author": "Emanuel D R Sena",
+  "license": "Apache-2.0",
+  "engines": {
+    "node": "20.11.1"
+  },
+  "scripts": {
+    "test": "jest --forceExit --coverage --verbose",
+    "test:watch": "jest --watch",
+    "build": "tsc -p tsconfig.build.json"
+  },
+  "devDependencies": {
+    "@faker-js/faker": "7.6.0",
+    "@jest/globals": "^29.7.0",
+    "@tsconfig/node20": "^20.1.2",
+    "@types/jest": "^29.5.12",
+    "@types/node": "^20.11.20",
+    "@types/uuid": "^9.0.8",
+    "@typescript-eslint/eslint-plugin": "^6.21.0",
+    "eslint": "^8.57.0",
+    "eslint-config-standard-with-typescript": "^43.0.1",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-n": "^16.6.2",
+    "eslint-plugin-promise": "^6.1.1",
+    "jest": "^29.7.0",
+    "prettier": "3.2.5",
+    "ts-jest": "^29.1.2",
+    "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "date-fns": "^3.3.1",
+    "uuid": "^9.0.1"
+  }
+}
