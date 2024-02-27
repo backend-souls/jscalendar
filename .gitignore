@@ -130,3 +130,8 @@ dist
 .pnp.*
 */**/target/
 node_modules
+ts-jest.log
+.vscode
+coverage
+dist
+build
