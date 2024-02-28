@@ -1,66 +1,103 @@
 import { UUID } from 'crypto';
-import { Type } from './type';
-import { v4 as uuidv4 } from 'uuid';
 
-import { UidGenerator } from './uid-generator';
+import { Link } from './link';
+import { Location } from './location';
+import { VirtualLocation } from './virtual-location';
 
-export type RelativeTo = 'start' | 'end';
-
-export type Feature = 'audio' | 'chat' | 'feed' | 'moderator' | 'phone' | 'screen' | 'video';
-
-export type Location<U> = {
-  _type: Type;
-  name?: string;
-  description?: string;
-  locationTypes?: Map<string, boolean>;
-  relativeTo?: RelativeTo;
-  timeZone?: string;
-  coordinates?: string;
-  links?: Map<U, Link>;
-};
-
-export type VirtualLocation = {
-  _type: Type;
-  name?: string;
-  description?: string;
-  uri?: string;
-  features?: Map<Feature, boolean>;
-};
-
-export type Link = {
-  _type: Type;
-};
-
-export type Details<U> = {
-  title?: string;
-  description?: string;
+export type DetailsProperties = {
+  title: string;
+  description: string;
   descriptionContentType?: string;
   showWithoutTime?: boolean;
-  locations?: Map<U, Location<U>>;
-  virtualLocations?: Map<U, VirtualLocation>;
-  links?: Map<U, Link>;
+  locations?: Map<UUID, Location>;
+  virtualLocations?: Map<UUID, VirtualLocation>;
+  links?: Map<UUID, Link>;
   locale?: string;
   keywords?: Map<string, boolean>;
   categories?: Map<string, boolean>;
   color?: string;
 };
 
-export type DetailsProperties = {
-  title: string;
-  description: string;
-};
+export class Details {
+  #title: string;
+  #description: string;
+  #descriptionContentType?: string;
+  #showWithoutTime?: boolean;
+  #locations?: Map<UUID, Location>;
+  #virtualLocations?: Map<UUID, VirtualLocation>;
+  #links?: Map<UUID, Link>;
+  #locale?: string;
+  #keywords?: Map<string, boolean>;
+  #categories?: Map<string, boolean>;
+  #color?: string;
 
-export type DetailRequest = DetailsProperties & UidGenerator;
+  constructor({
+    title,
+    description,
+    descriptionContentType,
+    showWithoutTime,
+    locations,
+    virtualLocations,
+    links,
+    locale,
+    keywords,
+    categories,
+    color,
+  }: DetailsProperties) {
+    this.#title = title;
+    this.#description = description;
+    this.#descriptionContentType = descriptionContentType;
+    this.#showWithoutTime = showWithoutTime;
+    this.#locations = locations;
+    this.#virtualLocations = virtualLocations;
+    this.#links = links;
+    this.#locale = locale;
+    this.#keywords = keywords;
+    this.#categories = categories;
+    this.#color = color;
+  }
 
-export function createDetails<U>(detailRequest: DetailRequest): Details<U> {
-  const detail: Details<U> = {
-    title: detailRequest.title,
-    description: detailRequest.description,
-  };
+  get title(): string {
+    return this.#title;
+  }
 
-  return detail;
-}
+  get description(): string {
+    return this.#description;
+  }
 
-export function defaultDetail(detailsProperties: DetailsProperties): Details<UUID> {
-  return createDetails<UUID>({ uidGenerator: uuidv4, ...detailsProperties });
+  get descriptionContentType(): string | undefined {
+    return this.#descriptionContentType;
+  }
+
+  get showWithoutTime(): boolean | undefined {
+    return this.#showWithoutTime;
+  }
+
+  get locations(): Map<UUID, Location> | undefined {
+    return this.#locations;
+  }
+
+  get virtualLocations(): Map<UUID, VirtualLocation> | undefined {
+    return this.#virtualLocations;
+  }
+
+  get links(): Map<UUID, Link> | undefined {
+    return this.#links;
+  }
+
+  get locale(): string | undefined {
+    return this.#locale;
+  }
+
+  get keywords(): Map<string, boolean> | undefined {
+    return this.#keywords;
+  }
+
+  get categories(): Map<string, boolean> | undefined {
+    return this.#categories;
+  }
+
+  get color(): string | undefined {
+    return this.#color;
+  }
 }

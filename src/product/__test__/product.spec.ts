@@ -1,40 +1,26 @@
-import { UUID } from 'node:crypto';
-import { validate as isValidUUIDv4 } from 'uuid';
+import { randomUUID } from 'node:crypto';
+
 import { describe, it, expect } from '@jest/globals';
 import { faker } from '@faker-js/faker/locale/en';
 
-import { createProduct, defaultProduct, Product } from '..';
+import { Product } from '..';
 
-describe('Product [DEFAULT_UID]', () => {
+describe('Product', () => {
   it('create a Product with all properties', () => {
     const productName = faker.commerce.product();
-    const product: Product<UUID> = defaultProduct({ name: productName });
+    const product: Product = new Product({ name: productName, externalProductId: randomUUID() });
+
+    expect(product.prodId).not.toBeNull();
+    expect(product.prodId).not.toBeUndefined();
 
     expect(product.name).toBe(productName);
+
+    expect(product.externalProductId).not.toBeNull();
+    expect(product.externalProductId).not.toBeUndefined();
   });
 
-  it('create a Product without name', () => {
-    const product: Product<UUID> = defaultProduct();
-
-    expect(isValidUUIDv4(product.prodId)).toBe(true);
-  });
-});
-
-describe('Product [CUSTOM_UID]', () => {
-  it('create a Product with all properties', () => {
-    const productName = faker.commerce.product();
-    const product: Product<string> = createProduct({
-      name: productName,
-      uidGenerator: faker.database.mongodbObjectId,
-    });
-
-    expect(product.name).toBe(productName);
-  });
-
-  it('create a Product without name', () => {
-    const product: Product<string> = createProduct({
-      uidGenerator: faker.database.mongodbObjectId,
-    });
+  it('create a Product without optional parameters', () => {
+    const product: Product = new Product();
 
     expect(product.prodId).not.toBeNull();
     expect(product.prodId).not.toBeUndefined();

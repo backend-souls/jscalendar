@@ -1,9 +1,8 @@
 import { Duration } from 'date-fns';
-import { createMetadata, Metadata } from './metadata';
-import { createDetails, Details, DetailsProperties } from './details';
-import { UidGenerator } from './uid-generator';
+import { Details, DetailsProperties } from './details';
 import { UUID } from 'crypto';
 import { v4 as uuidv4 } from 'uuid';
+import { Metadata } from './metadata';
 
 export type Status = 'confirmed' | 'cancelled' | 'tentative';
 
@@ -13,27 +12,30 @@ export type EventData = {
   status?: Status;
 };
 
-export type Event<U> = Metadata<U> & Details<U> & EventData;
+export type Event = Metadata & Details & EventData;
 
 export type EventProperties = {
   start: Date;
 } & DetailsProperties;
 
-export type EventRequest = EventProperties & UidGenerator;
-
 export function createEvent<U>(eventRequest: EventRequest): Event<U> {
-  const metadata: Metadata<U> = createMetadata<U>({
+  const metadata: Metadata = new Metadata({
     _type: 'Event',
-    uidGenerator: eventRequest.uidGenerator,
+    uid: eventRequest.uid,
+    product: eventRequest.product,
+    method: eventRequest.method,
   });
 
-  const detail: Details<U> = createDetails({
-    title: eventRequest.title,
+  const detail: Details = new Details({
+    name: eventRequest.name,
     description: eventRequest.description,
-    uidGenerator: eventRequest.uidGenerator,
+    location: eventRequest.location,
+    organizer: eventRequest.organizer,
+    attendees: eventRequest.attendees,
+    alarms: eventRequest.alarms,
   });
 
-  const event: Event<U> = {
+  const event: Event = {
     ...metadata,
     ...detail,
     start: eventRequest.start,
