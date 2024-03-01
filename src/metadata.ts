@@ -1,50 +1,75 @@
-import { UUID } from 'crypto';
-import { v4 as uuidv4 } from 'uuid';
+import { UUID, randomUUID } from 'crypto';
 
-import { Type } from './type';
+import { Type } from './datatypes/Type';
 import { Product } from './product';
-import { UidGenerator } from './uid-generator';
+import { Relation } from './datatypes/Relation';
 
-export type RelationType = 'first' | 'next' | 'child' | 'parent';
-
-export type Relation = {
-  readonly _type: Type;
-  readonly relation: Map<RelationType, boolean>;
-};
-
-export type Metadata<U> = {
-  '@type': Type;
-  uid: U;
-  product?: Product<U>;
-  relatedTo?: Map<U, Relation>;
-  created?: Date;
-  updated?: Date;
-  sequence?: number;
+export type MetadataProperties = {
+  _type: Type;
+  uid?: UUID;
+  product?: Product;
   method?: string;
 };
 
-export type MetadataProperties<U> = {
-  _type: Type;
-  product?: Product<U>;
-};
+export class Metadata {
+  #uid: UUID;
+  #_type: Type;
+  #created: Date;
+  #updated: Date;
+  #method?: string;
+  #sequence: number;
+  #product?: Product;
+  #relatedTo: Map<UUID, Relation>;
 
-export type MetadataRequest<U> = MetadataProperties<U> & UidGenerator;
+  constructor({ _type, uid, product, method }: MetadataProperties) {
+    this.#_type = _type;
+    this.#method = method;
+    this.#product = product;
 
-export function createMetadata<U>(metadataRequest: MetadataRequest<U>): Metadata<U> {
-  const metadata: Metadata<U> = {
-    '@type': metadataRequest._type,
-    uid: metadataRequest.uidGenerator() as U,
-    product: metadataRequest.product,
-    created: new Date(Date.now()),
-    updated: new Date(Date.now()),
-    sequence: 0,
-  };
+    this.#sequence = 0;
+    this.#uid = uid ? uid : randomUUID();
+    this.#created = new Date(Date.now());
+    this.#updated = new Date(Date.now());
+    this.#relatedTo = new Map<UUID, Relation>();
+  }
 
-  return metadata;
-}
+  get '@type'(): Type {
+    return this.#_type;
+  }
 
-export function defaultMetadata<UUID>(
-  metadataProperties: MetadataProperties<UUID>
-): Metadata<UUID> {
-  return createMetadata<UUID>({ uidGenerator: uuidv4, ...metadataProperties });
+  get uid(): UUID {
+    return this.#uid;
+  }
+
+  get product(): Product | undefined {
+    return this.#product;
+  }
+
+  get relatedTo(): Map<UUID, Relation> {
+    return this.#relatedTo;
+  }
+
+  get method(): string | undefined {
+    return this.#method;
+  }
+
+  get created(): Date {
+    return this.#created;
+  }
+
+  get updated(): Date {
+    return this.#updated;
+  }
+
+  get sequence(): number {
+    return this.#sequence;
+  }
+
+  addRelation(relation: Relation): void {
+    if (!this.#relatedTo) {
+      this.#relatedTo = new Map();
+    }
+
+    this.#relatedTo.set(randomUUID(), relation);
+  }
 }

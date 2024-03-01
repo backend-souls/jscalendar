@@ -1,33 +1,33 @@
-import { UUID } from 'node:crypto';
-import { v4 as uuidv4 } from 'uuid';
-
-import { UidGenerator } from '../uid-generator';
-
-export type Product<U> = {
-  prodId: U;
-
-  /** NOT RFC-8984 Properties */
-  externalProductId?: string;
-  name?: string;
-};
+import { UUID, randomUUID } from 'node:crypto';
 
 export type ProductProperties = {
-  externalProductId?: string;
+  prodId?: UUID;
   name?: string;
+  externalProductId?: string;
 };
 
-export type ProductRequest = ProductProperties & UidGenerator;
+export class Product {
+  #prodId: UUID;
 
-export function createProduct<U>(productRequest: ProductRequest): Product<U> {
-  const product: Product<U> = {
-    name: productRequest.name,
-    externalProductId: productRequest.externalProductId,
-    prodId: productRequest.uidGenerator() as U,
-  };
+  /** NOT RFC-8984 Properties */
+  #name?: string;
+  #externalProductId?: string;
 
-  return product;
-}
+  constructor({ prodId, name, externalProductId }: ProductProperties = {}) {
+    this.#prodId = prodId ? prodId : randomUUID();
+    this.#externalProductId = externalProductId;
+    this.#name = name;
+  }
 
-export function defaultProduct(productProperties?: ProductProperties): Product<UUID> {
-  return createProduct<UUID>({ uidGenerator: uuidv4, ...productProperties });
+  get prodId(): UUID {
+    return this.#prodId;
+  }
+
+  get name(): string | undefined {
+    return this.#name;
+  }
+
+  get externalProductId(): string | undefined {
+    return this.#externalProductId;
+  }
 }
