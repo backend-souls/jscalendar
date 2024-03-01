@@ -4,8 +4,6 @@ import { describe, it, expect } from 'vitest';
 import { faker } from '@faker-js/faker/locale/en';
 import { Product } from '../attributes/Product';
 
-import { classToPlain } from 'class-transformer';
-
 describe('Product', () => {
   it('create a Product with all properties', () => {
     const productName = faker.commerce.product();

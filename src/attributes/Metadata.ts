@@ -1,4 +1,3 @@
-import { Expose } from 'class-transformer';
 import { randomUUID } from 'crypto';
 import { Id, Product, Relation, type Type, UTCDateTime } from '../index';
 
@@ -20,7 +19,6 @@ export type MetadataProperties = {
 
 export class Metadata {
   /** Mandatory */
-  @Expose({ name: '@type' })
   private _type: Type;
 
   private uid: Id;
@@ -51,7 +49,6 @@ export class Metadata {
     this.#relatedTo = new Map<Id, Relation>();
   }
 
-  @Expose()
   get prodId(): Id | undefined {
     return this.product?.prodId;
   }

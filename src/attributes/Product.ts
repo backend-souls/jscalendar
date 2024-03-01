@@ -1,4 +1,3 @@
-import { Expose } from 'class-transformer';
 import { randomUUID, type UUID } from 'node:crypto';
 import { type Id } from 'src/index';
 
@@ -21,7 +20,6 @@ export class Product {
     this.#name = name;
   }
 
-  @Expose()
   get prodId(): Id {
     return this.uid;
   }
