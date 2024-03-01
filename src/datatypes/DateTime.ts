@@ -1,4 +1,4 @@
-import { UnsignedInteger, isUnsignedInteger } from './Integer';
+import { type UnsignedInteger, isUnsignedInteger } from './Integer';
 
 export type UTCDateTime = Date;
 export type LocalDateTime = Date;

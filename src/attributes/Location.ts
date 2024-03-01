@@ -1,6 +1,6 @@
-import { UUID, randomUUID } from 'node:crypto';
-import { Type } from './datatypes/Type';
-import { Link } from './link';
+import { type UUID, randomUUID } from 'node:crypto';
+import type { Type } from '../datatypes/Type';
+import { Link } from './Link';
 
 export type RelativeTo = 'start' | 'end';
 

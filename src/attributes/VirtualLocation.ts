@@ -1,4 +1,4 @@
-import { Type } from './datatypes/Type';
+import type { Type } from '../datatypes/Type';
 
 export type Feature = 'audio' | 'chat' | 'feed' | 'moderator' | 'phone' | 'screen' | 'video';
 

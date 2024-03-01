@@ -1,4 +1,4 @@
-import { Type } from './Type';
+import { type Type } from './Type';
 
 export type CanonicalType = 'first' | 'next' | 'child' | 'parent';
 export type BackendSoulsType = 'backendsouls.dev:origin' | 'backendsouls.dev:clone';
