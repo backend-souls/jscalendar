@@ -1,2 +1,3 @@
-export * from './product';
-export * from './events';
+export * from './domain';
+export * from './datatypes';
+export * from './attributes';

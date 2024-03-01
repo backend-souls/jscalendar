@@ -1,4 +1,4 @@
-import { UUID, randomUUID } from 'crypto';
+import { type UUID, randomUUID } from 'crypto';
 
 export type Id = UUID;
 

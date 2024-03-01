@@ -1,25 +1,36 @@
 {
-  "$schema": "https://json.schemastore.org/tsconfig",
-  "display": "Node 20",
-  "_version": "20.11.1",
   "compilerOptions": {
+    /* Base Options: */
     "target": "es2022",
-    "module": "commonjs",
-    "lib": ["es2022"],
-    "types": ["node", "jest"],
-    "declaration": true,
     "esModuleInterop": true,
-    "allowJs": true,
-    "moduleResolution": "Node",
-    "forceConsistentCasingInFileNames": true,
-    "strict": true,
     "skipLibCheck": true,
+    "verbatimModuleSyntax": false,
+    "allowJs": true,
+    "resolveJsonModule": true,
+    "moduleDetection": "force",
+    "isolatedModules": true,
+
+    /* Build for Library: */
+    "declaration": true,
+    "sourceMap": true,
+    "declarationMap": true,
+
+    /* Decorators */
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+
+    /* Strictness */
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+
+    "module": "CommonJS",
+    "moduleResolution": "Node",
+    "baseUrl": "./",
     "outDir": "./dist",
-    "rootDir": "./src",
-    "baseUrl": "."
+    "sourceRoot": "./src",
+
+    "lib": ["es2022"],
   },
   "include": ["src/**/*"],
-  "exclude": [
-    "node_modules"
-  ]
+  "exclude": ["node_modules", "dist"]
 }
