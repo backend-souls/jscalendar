@@ -27,6 +27,7 @@ export type NDay = {
 };
 
 export type RecurrenceRule = {
+  '@type': 'RecurrenceRule';
   frequency?: Frequency;
   interval?: UnsignedInt;
   rscale?: string;
@@ -45,7 +46,7 @@ export type RecurrenceRule = {
   until?: LocalDateTime;
 };
 
-export type OptionalRecurrenceProperties = {
+export type RecurrenceProperties = {
   recurrenceId?: LocalDateTime;
   recurrenceIdTimeZone?: TimeZoneId;
   recurrenceRules?: Array<RecurrenceRule>;
@@ -53,7 +54,3 @@ export type OptionalRecurrenceProperties = {
   recurrenceOverrides?: Array<PatchObject>;
   excluded?: boolean;
 };
-
-export type RecurrenceProperties = {
-  '@type': 'RecurrenceRule';
-} & OptionalRecurrenceProperties;

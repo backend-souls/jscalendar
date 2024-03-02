@@ -1,7 +1,5 @@
 import { PatchObject } from './PatchObject';
 
-export type OptionalMultilingualProperties = {
+export type MultilingualProperties = {
   localizations?: Map<string, PatchObject>;
 };
-
-export type MultilingualProperties = OptionalMultilingualProperties;
