@@ -21,13 +21,12 @@ export type Skip = 'omit' | 'backwards' | 'forwards';
 export type DayOfTheWeek = 'mo' | 'tu' | 'we' | 'th' | 'fr' | 'sa' | 'su';
 
 export type NDay = {
-  _type: Type;
+  '@type': 'NDay';
   day: string;
   nthOfPeriod?: Int;
 };
 
 export type RecurrenceRule = {
-  _type?: Type;
   frequency?: Frequency;
   interval?: UnsignedInt;
   rscale?: string;
@@ -46,8 +45,6 @@ export type RecurrenceRule = {
   until?: LocalDateTime;
 };
 
-export type RequiredRecurrenceProperties = {};
-
 export type OptionalRecurrenceProperties = {
   recurrenceId?: LocalDateTime;
   recurrenceIdTimeZone?: TimeZoneId;
@@ -57,5 +54,6 @@ export type OptionalRecurrenceProperties = {
   excluded?: boolean;
 };
 
-export type RecurrenceProperties = RequiredRecurrenceProperties &
-  OptionalRecurrenceProperties;
+export type RecurrenceProperties = {
+  '@type': 'RecurrenceRule';
+} & OptionalRecurrenceProperties;

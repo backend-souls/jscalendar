@@ -4,6 +4,12 @@ import { RelativeTo } from './RelativeTo';
 
 export type ActionType = 'display' | 'email';
 
+/** Extension to Actions */
+export type BackendSoulsActionType =
+  | 'backendsouls:sms'
+  | 'backendsouls:email'
+  | 'backendsouls:webhook';
+
 export type OffsetTrigger = {
   _type: 'OffsetTrigger';
   offset: SignedDuration;
@@ -31,5 +37,5 @@ export type OptionalAlertProperties = {
   alerts?: Map<Id, Alert>;
   acknowledged?: UTCDateTime;
   relatedTo?: Map<string, Relation>;
-  action: ActionType;
+  action: ActionType & BackendSoulsActionType;
 };
