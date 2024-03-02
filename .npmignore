@@ -1,5 +1,7 @@
+docs
 src
 test
+**/__test__/**
 .changeset
 .github
 pnpm-lock.yaml

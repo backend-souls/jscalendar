@@ -14,6 +14,5 @@ export type OptionalMetadataProperties = {
   method?: string;
 };
 
-export type MetadataProperties = RequiredMetadataProperties & OptionalMetadataProperties;
-
-export type Metadata = MetadataProperties;
+export type MetadataProperties = RequiredMetadataProperties &
+  OptionalMetadataProperties;

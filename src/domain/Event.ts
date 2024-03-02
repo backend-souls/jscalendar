@@ -1,7 +1,7 @@
 import {
   Details,
   DetailsProperties,
-  Metadata,
+  MetadataProperties,
   type Duration,
   type UTCDateTime,
   RequiredMetadataProperties,
@@ -14,7 +14,7 @@ export type RequiredEventProperties = RequiredMetadataProperties &
     start: UTCDateTime;
   };
 
-export type Event = Metadata &
+export type Event = MetadataProperties &
   Details & {
     start: UTCDateTime;
     duration?: Duration;
