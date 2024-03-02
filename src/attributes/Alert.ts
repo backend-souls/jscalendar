@@ -28,14 +28,14 @@ export type UnknownTrigger = {
 export type AlertTrigger = OffsetTrigger | AbsoluteTrigger | UnknownTrigger;
 
 export type Alert = {
-  _type: Type;
+  _type: 'Alert';
   trigger: AlertTrigger;
-};
-
-export type OptionalAlertProperties = {
-  useDefaultAlerts?: boolean;
-  alerts?: Map<Id, Alert>;
   acknowledged?: UTCDateTime;
   relatedTo?: Map<string, Relation>;
-  action: ActionType & BackendSoulsActionType;
+  action?: ActionType & BackendSoulsActionType;
+};
+
+export type AlertProperties = {
+  useDefaultAlerts?: boolean;
+  alerts?: Map<Id, Alert>;
 };

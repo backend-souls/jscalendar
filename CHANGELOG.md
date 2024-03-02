@@ -1,5 +1,11 @@
 # @backend-souls/jscalendar
 
+## 0.1.5
+
+### Patch Changes
+
+- Add Scheduling and Sharing types from RFC-8984
+
 ## 0.1.4
 
 ### Patch Changes

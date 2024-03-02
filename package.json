@@ -1,6 +1,6 @@
 {
   "name": "@backend-souls/jscalendar",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "license": "Apache-2.0",
   "private": false,
   "author": "Emanuel D R Sena",
@@ -30,8 +30,8 @@
     "release": "pnpm run lint && pnpm run test && pnpm run build && changeset publish"
   },
   "devDependencies": {
-    "@faker-js/faker": "8.4.1",
     "@changesets/cli": "^2.27.1",
+    "@faker-js/faker": "8.4.1",
     "@swc/cli": "^0.3.10",
     "@swc/core": "^1.4.2",
     "@tsconfig/node20": "^20.1.2",

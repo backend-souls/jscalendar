@@ -24,9 +24,7 @@ export type TimeZone = {
   daylight?: Array<TimeZoneRule>;
 };
 
-export type OptionalTimeZoneProperties = {
+export type TimeZoneProperties = {
   timeZone?: TimeZoneId | null;
   timeZones?: Map<TimeZoneId, TimeZone>;
 };
-
-export type TimeZoneProperties = OptionalTimeZoneProperties;
