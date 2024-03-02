@@ -1,8 +1,20 @@
-import { Int, LocalDateTime, TimeZoneId, Type, UnsignedInt } from 'src/datatypes';
+import {
+  Int,
+  LocalDateTime,
+  TimeZoneId,
+  Type,
+  UnsignedInt,
+} from 'src/datatypes';
+import { PatchObject } from './PatchObject';
 
-export type PatchObject = {};
-
-export type Frequency = 'secondly' | 'minutely' | 'hourly' | 'daily' | 'weekly' | 'monthly' | 'yearly';
+export type Frequency =
+  | 'secondly'
+  | 'minutely'
+  | 'hourly'
+  | 'daily'
+  | 'weekly'
+  | 'monthly'
+  | 'yearly';
 
 export type Skip = 'omit' | 'backwards' | 'forwards';
 
@@ -45,6 +57,5 @@ export type OptionalRecurrenceProperties = {
   excluded?: boolean;
 };
 
-export type RecurrenceProperties = RequiredRecurrenceProperties & OptionalRecurrenceProperties;
-
-export type Recurrence = RecurrenceProperties;
+export type RecurrenceProperties = RequiredRecurrenceProperties &
+  OptionalRecurrenceProperties;

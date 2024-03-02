@@ -1,8 +1,7 @@
 import { type UUID, randomUUID } from 'node:crypto';
 import type { Type } from '../datatypes/Type';
 import { Link } from './Link';
-
-export type RelativeTo = 'start' | 'end';
+import { RelativeTo } from './RelativeTo';
 
 export type LocationProperties = {
   name: string;
@@ -22,7 +21,13 @@ export class Location {
   #links?: Map<UUID, Link> = new Map<UUID, Link>();
   #locationTypes?: Map<string, boolean> = new Map<string, boolean>();
 
-  constructor({ name, description, relativeTo, timeZone, coordinates }: LocationProperties) {
+  constructor({
+    name,
+    description,
+    relativeTo,
+    timeZone,
+    coordinates,
+  }: LocationProperties) {
     this.#name = name;
     this.#description = description;
     this.#relativeTo = relativeTo;
