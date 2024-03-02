@@ -1,4 +1,4 @@
-import { type UnsignedInteger, isUnsignedInteger } from './Integer';
+import { type UnsignedInt, isUnsignedInteger } from './Integer';
 
 export type UTCDateTime = Date;
 export type LocalDateTime = Date;
@@ -16,13 +16,13 @@ export type SignedDuration = {
 };
 
 export type Duration = {
-  seconds?: UnsignedInteger;
-  minutes?: UnsignedInteger;
-  hours?: UnsignedInteger;
-  days?: UnsignedInteger;
-  weeks?: UnsignedInteger;
-  months?: UnsignedInteger;
-  years?: UnsignedInteger;
+  seconds?: UnsignedInt;
+  minutes?: UnsignedInt;
+  hours?: UnsignedInt;
+  days?: UnsignedInt;
+  weeks?: UnsignedInt;
+  months?: UnsignedInt;
+  years?: UnsignedInt;
 };
 
 export function isValidDuration(duration: Duration): boolean {

@@ -2,12 +2,15 @@ import { randomUUID } from 'node:crypto';
 
 import { describe, it, expect } from 'vitest';
 import { faker } from '@faker-js/faker/locale/en';
-import { Product } from '../attributes/Product';
+import { Product } from 'src/domain/extensions';
 
 describe('Product', () => {
   it('create a Product with all properties', () => {
     const productName = faker.commerce.product();
-    const product: Product = new Product({ name: productName, externalProductId: randomUUID() });
+    const product: Product = new Product({
+      name: productName,
+      externalProductId: randomUUID(),
+    });
 
     expect(product.prodId).not.toBeNull();
     expect(product.prodId).not.toBeUndefined();
