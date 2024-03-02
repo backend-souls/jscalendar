@@ -1,5 +1,11 @@
 # @backend-souls/jscalendar
 
+## 0.1.4
+
+### Patch Changes
+
+- Add remaining types from RFC and adjust minor configurations
+
 ## 0.1.3
 
 ### Patch Changes
