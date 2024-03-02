@@ -3,6 +3,15 @@ export type Type =
   | 'Task'
   | 'Group'
   | 'Relation'
+  | 'NDay'
   | 'Link'
   | 'VirtualLocation'
-  | 'Location';
+  | 'Location'
+  | 'Alert'
+  | 'RecurrenceRule'
+  | 'Participant'
+  | 'OffsetTrigger'
+  | 'AbsoluteTrigger'
+  | 'UnknownTrigger'
+  | 'TimeZone'
+  | 'TimeZoneRule';
