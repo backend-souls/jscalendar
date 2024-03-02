@@ -1,5 +1,11 @@
 # @backend-souls/jscalendar
 
+## 0.1.3
+
+### Patch Changes
+
+- Add more data from RFC-8984 to the project
+
 ## 0.1.2
 
 ### Patch Changes
