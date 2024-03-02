@@ -1,5 +1,11 @@
 # @backend-souls/jscalendar
 
+## 0.1.2
+
+### Patch Changes
+
+- Add new types from RFC-8984
+
 ## 0.1.1
 
 ### Patch Changes
