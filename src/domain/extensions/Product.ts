@@ -14,7 +14,11 @@ export class Product {
   #name?: string;
   #externalId?: string;
 
-  constructor({ uid: prodId, name, externalProductId }: ProductProperties = {}) {
+  constructor({
+    uid: prodId,
+    name,
+    externalProductId,
+  }: ProductProperties = {}) {
     this.uid = prodId ? prodId : randomUUID();
     this.#externalId = externalProductId;
     this.#name = name;

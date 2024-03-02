@@ -1,8 +1,8 @@
 export type Int = number;
 
-export type UnsignedInteger = number;
+export type UnsignedInt = number;
 
-export function isUnsignedInteger(value: UnsignedInteger): boolean {
+export function isUnsignedInteger(value: UnsignedInt): boolean {
   return Number.isInteger(value) && value >= 0;
 }
 
@@ -22,7 +22,7 @@ export class UnsignedIntegerError extends Error {
 export function ValidUnsignedInteger(target: any, key: string, descriptor: PropertyDescriptor) {
   const originalSet = descriptor.set;
 
-  descriptor.set = function (value: UnsignedInteger) {
+  descriptor.set = function (value: UnsignedInt) {
     if (!isUnsignedInteger(value)) {
       throw new UnsignedIntegerError('Invalid unsigned integer');
     }
