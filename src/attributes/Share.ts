@@ -3,8 +3,6 @@ import { Link } from './Link';
 
 export type Progress = 'completed' | 'in-process' | 'failed' | 'needs-action';
 
-export type ScheduleAgent = 'server' | 'client' | 'none'; // default is 'server'
-
 export type ParticipationStatus =
   | 'needs-action'
   | 'accepted'
@@ -22,35 +20,28 @@ export type Role =
 
 export type Kind = 'individual' | 'group' | 'location' | 'resource';
 
-export type SheduleStatusCode = string; // defined by RFC-5545 (TODO: define the possible values)
-
 export type Participant = {
   '@type': 'Participant';
+  roles: Map<Role, boolean>; // at least one role must be assigned to the participant
   name?: string;
   email?: Email;
   description?: string;
-  sendTo?: Map<Omit<ResponseMethod, 'web'> & BSoulsResponseMethod, URI>;
+  sendTo?: Map<ResponseMethod & BSoulsResponseMethod, URI>;
   kind?: Kind;
-  roles: Map<Role, boolean>; // at least one role must be assigned to the participant
   locationId?: Id;
   language?: string; // RFC-5646
   participationStatus?: ParticipationStatus;
   participationComment?: string;
   expectReply?: boolean; // default is false
-  scheduleAgent: ScheduleAgent;
-  scheduleForceSend?: boolean; // default is false
-  scheduleSequence?: UnsignedInt; // default is 0
-  scheduleStatus?: SheduleStatusCode; // defined by RFC-5545
-  scheduleUpdated?: UTCDateTime;
   sentBy?: Email;
   invitedBy?: Id;
   delegatedTo?: Map<Id, boolean>;
   delegatedFrom?: Map<Id, boolean>;
   memberOf?: Map<Id, boolean>;
-  links: Map<Id, Link>;
-  progress: Map<Id, Progress>;
-  progressUpdated: UTCDateTime;
-  percentComplete: UnsignedInt; // 0 - 100
+  links?: Map<Id, Link>;
+  progress?: Progress;
+  progressUpdated?: UTCDateTime;
+  percentComplete?: UnsignedInt; // 0 - 100
 };
 
 export type ResponseMethod = 'imip' | 'web' | 'other';
@@ -71,5 +62,4 @@ export type SharingProperties = {
   replyTo?: Map<ResponseMethod & BSoulsResponseMethod, URI>;
   sentBy?: Email;
   participants?: Map<Id, Participant>;
-  requestStatus?: SheduleStatusCode; // defined by RFC-5545
 };

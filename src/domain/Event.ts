@@ -3,7 +3,6 @@ import { SchedulingProperties } from 'src/attributes/Schedule';
 import { SharingProperties } from 'src/attributes/Share';
 import { TimeZoneProperties } from 'src/attributes/TimeZone';
 import {
-  Details,
   DetailsProperties,
   MetadataProperties,
   Duration,
@@ -22,7 +21,7 @@ export type RequiredEventProperties = RequiredMetadataProperties &
   };
 
 export type Event = MetadataProperties &
-  Details &
+  DetailsProperties &
   RecurrenceProperties &
   SharingProperties &
   SchedulingProperties &
@@ -35,21 +34,44 @@ export type Event = MetadataProperties &
     status?: Status;
   };
 
-/**
- * Create a new event with default values defined in the RFC-8984
- * @param start - The start date of the event, in UTC
- */
-export function createDefaultEvent(start: UTCDateTime): Event {
+export function createCanonicalEvent(start: UTCDateTime): Event {
   return {
     start,
     '@type': 'Event',
     updated: new Date(),
-    created: new Date(),
     sequence: 0,
     uid: generateRandomId(),
     title: '',
     description: '',
     descriptionContentType: 'text/plain',
     showWithoutTime: false,
-  };
+  } satisfies Event;
+}
+
+export function createDefaultEvent(start: UTCDateTime): Event {
+  return {
+    start,
+    '@type': 'Event',
+    updated: new Date(),
+    sequence: 0,
+    uid: generateRandomId(),
+    title: '',
+    description: '',
+    descriptionContentType: 'text/plain',
+    showWithoutTime: false,
+  } satisfies Event;
+}
+
+export function createCustomEvent(start: UTCDateTime): Event {
+  return {
+    start,
+    '@type': 'Event',
+    updated: new Date(),
+    sequence: 0,
+    uid: generateRandomId(),
+    title: '',
+    description: '',
+    descriptionContentType: 'text/plain',
+    showWithoutTime: false,
+  } satisfies Event;
 }

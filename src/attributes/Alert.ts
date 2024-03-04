@@ -1,13 +1,12 @@
 import { Relation, SignedDuration, Type, UTCDateTime } from 'src/datatypes';
 import { Id } from 'src/datatypes';
-import { RelativeTo } from './RelativeTo';
+import { RelativeTo } from '../datatypes/RelativeTo';
 
 export type ActionType = 'display' | 'email';
 
 /** Extension to Actions */
 export type BackendSoulsActionType =
   | 'backendsouls:sms'
-  | 'backendsouls:email'
   | 'backendsouls:webhook';
 
 export type OffsetTrigger = {
@@ -28,7 +27,7 @@ export type UnknownTrigger = {
 export type AlertTrigger = OffsetTrigger | AbsoluteTrigger | UnknownTrigger;
 
 export type Alert = {
-  _type: 'Alert';
+  '@type': 'Alert';
   trigger: AlertTrigger;
   acknowledged?: UTCDateTime;
   relatedTo?: Map<string, Relation>;
