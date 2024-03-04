@@ -1,5 +1,11 @@
 # @backend-souls/jscalendar
 
+## 0.1.6
+
+### Patch Changes
+
+- Fix some optional data types
+
 ## 0.1.5
 
 ### Patch Changes

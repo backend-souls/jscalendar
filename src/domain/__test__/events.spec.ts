@@ -3,8 +3,16 @@ import { describe, it, expect } from 'vitest';
 import { Event, createDefaultEvent } from 'src/domain';
 import { generateRandomId } from 'src/datatypes';
 
+/**
+ * Definitions:
+ * - Event: An event is a scheduled occurrence; a calendar entry.
+ */
 describe('Events', () => {
-  it('should create a default Event with fields defined in the RFC-8984', () => {
+  /**
+   * Definitions:
+   * - Canonical Event: An event with fields values defined in the RFC-8984.
+   */
+  it('should create a canonical Event', () => {
     const event: Event = createDefaultEvent(
       new Date(Date.now() + 1000 * 60 * 60 * 24 * 7) // 7 days from now
     );

@@ -3,18 +3,19 @@ import { RecurrenceRule } from './Recurrence';
 import { PatchObject } from './PatchObject';
 
 export type TimeZoneRule = {
-  _type: Type;
+  '@type': 'TimeZoneRule';
   start: LocalDateTime;
-  offsetFrom: string;
   offsetTo: string;
-  recurrenceRule?: Array<RecurrenceRule>;
+  offsetFrom: string;
+  recurrenceRules?: Array<RecurrenceRule>;
   recurrenceOverrides?: Map<LocalDateTime, PatchObject>;
+  // This maps the TZNAME properties from iCalendar to a JSON set.
   names: Map<string, boolean>;
   comments: Array<string>;
 };
 
 export type TimeZone = {
-  _type: Type;
+  '@type': 'TimeZone';
   tzId: string;
   updated?: UTCDateTime;
   url?: string;
