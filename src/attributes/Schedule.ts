@@ -1,28 +1,58 @@
-import { Int, UTCDateTime, UnsignedInt } from 'src/datatypes';
-
-// TODO: define the possible values
-export type ScheduleStatusCode = string; // defined by RFC-5545
-export type ScheduleAgent = 'server' | 'client' | 'none'; // default is 'server'
-
-export type FreeBusyStatus = 'busy' | 'free';
-
-// busy and free are already defined in FreeBusyStatus (this is an extension)
-export type BackendSoulsFreeBusyStatus =
-  | 'backendsouls:unknown'
-  | 'backendsouls:unavailable'
-  | 'backendsouls:tentative'
-  | 'backendsouls:outOfOffice';
+import {
+  Int,
+  FreeBusyStatus,
+  FreeBusyStatusError,
+  BSoulsFreeBusyStatus,
+  isBSoulsFreeBusyStatus,
+  isFreeBusyStatus,
+} from 'src/datatypes';
 
 export type SchedulingProperties = {
   priority?: Int;
-  freeBusyStatus?: FreeBusyStatus & BackendSoulsFreeBusyStatus;
+  freeBusyStatus?: FreeBusyStatus | BSoulsFreeBusyStatus;
   requestStatus?: string; // TODO: RFC-5545
-  scheduleAgent?: ScheduleAgent;
-  scheduleForceSend?: boolean; // default is false
-  scheduleSequence?: UnsignedInt; // default is 0
-
-  // This property MUST NOT be included in scheduling messages.
-  scheduleStatus?: Array<ScheduleStatusCode>; // defined by RFC-5545
-
-  scheduleUpdated?: UTCDateTime;
 };
+
+export class ScheduleBuilder {
+  #schedule: SchedulingProperties = {};
+
+  public withPriority(priority: Int): ScheduleBuilder {
+    this.#schedule.priority = priority;
+    return this;
+  }
+
+  public fromFreeBusyStatus(freeBusyStatus: FreeBusyStatus): ScheduleBuilder {
+    if (
+      this.#schedule.freeBusyStatus &&
+      isBSoulsFreeBusyStatus(this.#schedule.freeBusyStatus)
+    ) {
+      throw new FreeBusyStatusError(freeBusyStatus);
+    }
+
+    this.#schedule.freeBusyStatus = freeBusyStatus;
+    return this;
+  }
+
+  public fromBSoulsFreeBusyStatus(
+    freeBusyStatus: BSoulsFreeBusyStatus
+  ): ScheduleBuilder {
+    if (
+      this.#schedule.freeBusyStatus &&
+      isFreeBusyStatus(this.#schedule.freeBusyStatus)
+    ) {
+      throw new FreeBusyStatusError(freeBusyStatus);
+    }
+
+    this.#schedule.freeBusyStatus = freeBusyStatus;
+    return this;
+  }
+
+  public withRequestStatus(requestStatus: string): ScheduleBuilder {
+    this.#schedule.requestStatus = requestStatus;
+    return this;
+  }
+
+  public build(): SchedulingProperties {
+    return this.#schedule;
+  }
+}

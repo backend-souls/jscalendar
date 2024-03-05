@@ -11,18 +11,25 @@ export type WhatProperties = {
 
   // TODO: add multimedia support (html?)
   description?: string;
+
   descriptionContentType?: string;
 
   showWithoutTime?: boolean;
+
   locale?: string;
+
   keywords?: Map<string, boolean>;
+
   categories?: Map<string, boolean>;
+
   color?: string;
 };
 
 export type WhereProperties = {
   locations?: Map<Id, Location>;
+
   virtualLocations?: Map<Id, VirtualLocation>;
+
   links?: Map<Id, Link>;
 };
 

@@ -7,3 +7,4 @@ export * from './URI';
 export * from './Email';
 export * from './AlertTrigger';
 export * from './AlertType';
+export * from './FreeBusyStatus';

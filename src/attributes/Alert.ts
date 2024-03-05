@@ -2,7 +2,7 @@ import {
   Id,
   Relation,
   UTCDateTime,
-  BackendSoulsActionType,
+  BSoulsActionType,
   AlertTrigger,
   ActionType,
   ActionTypeError,
@@ -10,17 +10,22 @@ import {
   isBackendsoulsActionType,
 } from 'src/datatypes';
 
-export type Alert = {
-  '@type': 'Alert';
-  trigger: AlertTrigger;
-  acknowledged?: UTCDateTime;
-  relatedTo?: Map<string, Relation>;
-  action?: ActionType | BackendSoulsActionType;
-};
-
 export type AlertProperties = {
   useDefaultAlerts?: boolean;
+
   alerts?: Map<Id, Alert>;
+};
+
+export type Alert = {
+  '@type': 'Alert';
+
+  trigger: AlertTrigger;
+
+  acknowledged?: UTCDateTime;
+
+  relatedTo?: Map<string, Relation>;
+
+  action?: ActionType | BSoulsActionType;
 };
 
 export class AlertBuilder {
@@ -36,7 +41,7 @@ export class AlertBuilder {
     return this;
   }
 
-  public withBackendSoulsAction(action: BackendSoulsActionType): AlertBuilder {
+  public withBackendSoulsAction(action: BSoulsActionType): AlertBuilder {
     if (this.#alert.action && isActionType(this.#alert.action)) {
       throw new ActionTypeError(action);
     }
