@@ -9,7 +9,7 @@ import {
 
 export type SchedulingProperties = {
   priority?: Int;
-  freeBusyStatus?: FreeBusyStatus | BSoulsFreeBusyStatus;
+  freeBusyStatus?: FreeBusyStatus & BSoulsFreeBusyStatus;
   requestStatus?: string; // TODO: RFC-5545
 };
 
@@ -21,24 +21,13 @@ export class ScheduleBuilder {
     return this;
   }
 
-  public fromFreeBusyStatus(freeBusyStatus: FreeBusyStatus): ScheduleBuilder {
-    if (
-      this.#schedule.freeBusyStatus &&
-      isBSoulsFreeBusyStatus(this.#schedule.freeBusyStatus)
-    ) {
-      throw new FreeBusyStatusError(freeBusyStatus);
-    }
-
-    this.#schedule.freeBusyStatus = freeBusyStatus;
-    return this;
-  }
-
-  public fromBSoulsFreeBusyStatus(
-    freeBusyStatus: BSoulsFreeBusyStatus
+  public withFreeBusyStatus(
+    freeBusyStatus: FreeBusyStatus & BSoulsFreeBusyStatus
   ): ScheduleBuilder {
     if (
-      this.#schedule.freeBusyStatus &&
-      isFreeBusyStatus(this.#schedule.freeBusyStatus)
+      freeBusyStatus &&
+      !isFreeBusyStatus(freeBusyStatus) &&
+      !isBSoulsFreeBusyStatus(freeBusyStatus)
     ) {
       throw new FreeBusyStatusError(freeBusyStatus);
     }

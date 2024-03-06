@@ -9,7 +9,7 @@ used for storage and data exchange in a calendaring and scheduling environment.
 ### Nomenclature
 
 #### Builders
-- add*(): Add a mar/array to the object
+- add*(): Add a map/array to the object
 - with*(): Set a optional value to the object
 - set*(): Set a required value to the object
 - from*(): Set a value from mutually exclusive options
