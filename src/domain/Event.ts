@@ -34,6 +34,7 @@ export type Event = MetadataProperties &
     status?: Status;
   };
 
+/** Create create canonical Event (default properties from RFC-8984) */
 export function createCanonicalEvent(start: UTCDateTime): Event {
   return {
     start,
@@ -48,20 +49,23 @@ export function createCanonicalEvent(start: UTCDateTime): Event {
   } satisfies Event;
 }
 
+/** Create create default Event */
 export function createDefaultEvent(start: UTCDateTime): Event {
   return {
     start,
     '@type': 'Event',
     updated: new Date(),
+    created: new Date(),
     sequence: 0,
     uid: generateRandomId(),
-    title: '',
-    description: '',
+    title: 'Please add a title',
+    description: 'Please add a description',
     descriptionContentType: 'text/plain',
     showWithoutTime: false,
   } satisfies Event;
 }
 
+/** TBD */
 export function createCustomEvent(start: UTCDateTime): Event {
   return {
     start,

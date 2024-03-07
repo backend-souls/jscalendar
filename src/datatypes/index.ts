@@ -5,3 +5,6 @@ export * from './Relation';
 export * from './Type';
 export * from './URI';
 export * from './Email';
+export * from './AlertTrigger';
+export * from './AlertType';
+export * from './FreeBusyStatus';

@@ -1,40 +1,75 @@
-import { Relation, SignedDuration, Type, UTCDateTime } from 'src/datatypes';
-import { Id } from 'src/datatypes';
-import { RelativeTo } from '../datatypes/RelativeTo';
-
-export type ActionType = 'display' | 'email';
-
-/** Extension to Actions */
-export type BackendSoulsActionType =
-  | 'backendsouls:sms'
-  | 'backendsouls:webhook';
-
-export type OffsetTrigger = {
-  _type: 'OffsetTrigger';
-  offset: SignedDuration;
-  relativeTo: RelativeTo;
-};
-
-export type AbsoluteTrigger = {
-  _type: 'AbsoluteTrigger';
-  when: UTCDateTime;
-};
-
-export type UnknownTrigger = {
-  _type: 'UnknownTrigger';
-};
-
-export type AlertTrigger = OffsetTrigger | AbsoluteTrigger | UnknownTrigger;
-
-export type Alert = {
-  '@type': 'Alert';
-  trigger: AlertTrigger;
-  acknowledged?: UTCDateTime;
-  relatedTo?: Map<string, Relation>;
-  action?: ActionType & BackendSoulsActionType;
-};
+import {
+  Id,
+  Relation,
+  UTCDateTime,
+  BSoulsActionType,
+  AlertTrigger,
+  ActionType,
+  ActionTypeError,
+  isActionType,
+  isBackendsoulsActionType,
+} from 'src/datatypes';
 
 export type AlertProperties = {
   useDefaultAlerts?: boolean;
+
   alerts?: Map<Id, Alert>;
 };
+
+export type Alert = {
+  '@type': 'Alert';
+
+  trigger: AlertTrigger;
+
+  acknowledged?: UTCDateTime;
+
+  relatedTo?: Map<string, Relation>;
+
+  action?: ActionType | BSoulsActionType;
+};
+
+export class AlertBuilder {
+  #alert: Alert = {
+    '@type': 'Alert',
+    trigger: {
+      '@type': 'UnknownTrigger',
+    },
+  };
+
+  public withTrigger(trigger: AlertTrigger): AlertBuilder {
+    this.#alert.trigger = trigger;
+    return this;
+  }
+
+  public withBackendSoulsAction(action: BSoulsActionType): AlertBuilder {
+    if (this.#alert.action && isActionType(this.#alert.action)) {
+      throw new ActionTypeError(action);
+    }
+
+    this.#alert.action = action;
+    return this;
+  }
+
+  public withCanonicalAction(action: ActionType): AlertBuilder {
+    if (this.#alert.action && isBackendsoulsActionType(this.#alert.action)) {
+      throw new ActionTypeError(action);
+    }
+
+    this.#alert.action = action;
+    return this;
+  }
+
+  public withAcknowledged(acknowledged: UTCDateTime): AlertBuilder {
+    this.#alert.acknowledged = acknowledged;
+    return this;
+  }
+
+  public addRelatedTo(relatedTo: Map<string, Relation>): AlertBuilder {
+    this.#alert.relatedTo = relatedTo;
+    return this;
+  }
+
+  public build(): Alert {
+    return this.#alert satisfies Alert;
+  }
+}
