@@ -1,3 +1,4 @@
+import { Duration } from 'date-fns';
 import { MultilingualProperties } from 'src/attributes/Multilingual';
 import { SchedulingProperties } from 'src/attributes/Schedule';
 import { SharingProperties } from 'src/attributes/Share';
@@ -5,11 +6,10 @@ import { TimeZoneProperties } from 'src/attributes/TimeZone';
 import {
   DetailsProperties,
   MetadataProperties,
-  Duration,
   type UTCDateTime,
   RequiredMetadataProperties,
   RecurrenceProperties,
-  generateRandomId,
+  genId,
   AlertProperties,
 } from 'src/index';
 
@@ -41,7 +41,7 @@ export function createCanonicalEvent(start: UTCDateTime): Event {
     '@type': 'Event',
     updated: new Date(),
     sequence: 0,
-    uid: generateRandomId(),
+    uid: genId(),
     title: '',
     description: '',
     descriptionContentType: 'text/plain',
@@ -57,7 +57,7 @@ export function createDefaultEvent(start: UTCDateTime): Event {
     updated: new Date(),
     created: new Date(),
     sequence: 0,
-    uid: generateRandomId(),
+    uid: genId(),
     title: 'Please add a title',
     description: 'Please add a description',
     descriptionContentType: 'text/plain',
@@ -72,7 +72,7 @@ export function createCustomEvent(start: UTCDateTime): Event {
     '@type': 'Event',
     updated: new Date(),
     sequence: 0,
-    uid: generateRandomId(),
+    uid: genId(),
     title: '',
     description: '',
     descriptionContentType: 'text/plain',

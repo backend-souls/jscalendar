@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest';
 
 import { Event, createDefaultEvent } from 'src/domain';
-import { generateRandomId } from 'src/datatypes';
+import { genId } from 'src/datatypes';
 
 /**
  * Definitions:
@@ -28,7 +28,7 @@ describe('Events', () => {
   it('should create Event with required fields', () => {
     const event: Event = {
       '@type': 'Event',
-      uid: generateRandomId(),
+      uid: genId(),
       updated: new Date(),
       start: new Date(),
     };

@@ -1,10 +1,4 @@
-import {
-  Int,
-  LocalDateTime,
-  TimeZoneId,
-  Type,
-  UnsignedInt,
-} from 'src/datatypes';
+import { Int, LocalDateTime, TimeZoneId, UnsignedInt } from 'src/datatypes';
 import { PatchObject } from './PatchObject';
 
 export type Frequency =
