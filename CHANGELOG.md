@@ -1,5 +1,11 @@
 # @backend-souls/jscalendar
 
+## 0.1.7
+
+### Patch Changes
+
+- Add date-fns as peer deps
+
 ## 0.1.6
 
 ### Patch Changes
