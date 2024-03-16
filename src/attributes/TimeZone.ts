@@ -1,4 +1,4 @@
-import { LocalDateTime, TimeZoneId, Type, UTCDateTime } from 'src/datatypes';
+import { LocalDateTime, TimeZoneId, UTCDateTime } from 'src/datatypes';
 import { RecurrenceRule } from './Recurrence';
 import { PatchObject } from './PatchObject';
 

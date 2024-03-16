@@ -1,4 +1,4 @@
-import { Id, Relation, type Type, UTCDateTime, UnsignedInt } from '../index';
+import { Id, Relation, UTCDateTime, UnsignedInt } from '../index';
 
 export type RequiredMetadataProperties = {
   uid: Id;

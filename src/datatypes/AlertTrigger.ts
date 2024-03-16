@@ -1,9 +1,10 @@
-import { SignedDuration, UTCDateTime } from 'src/datatypes';
+import { UTCDateTime } from 'src/datatypes';
 import { RelativeTo } from '../datatypes/RelativeTo';
+import { Duration } from 'date-fns';
 
 export type OffsetTrigger = {
   '@type': 'OffsetTrigger';
-  offset: SignedDuration;
+  offset: Duration;
   relativeTo: RelativeTo;
 };
 

@@ -2,4 +2,4 @@ import { type UUID, randomUUID } from 'crypto';
 
 export type Id = UUID;
 
-export const generateRandomId = randomUUID;
+export const genId = randomUUID;
